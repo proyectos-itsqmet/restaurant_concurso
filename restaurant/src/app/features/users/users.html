@@ -1,1 +1,27 @@
-<p>users works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div>
+    <!-- Formulario -->
+    <gc-card>
+      <gc-input></gc-input>
+      <gc-input></gc-input>
+      <gc-select
+        inputLabel="Cargo"
+        inputDescription="Selecciona el cargo."
+        placeholder="Elige un cargo..."
+        [options]="cargo"
+        [value]="selectCargo"
+        (valueChange)="selectCargo = $event"
+      />
+    </gc-card>
+  </div>
+  <div>
+    <!-- Tabla -->
+  </div>
+
+  <div class="flex gap-4 my-6">
+    <gc-input placeholder="Buscar empleado..."></gc-input>
+    <gc-button><ng-icon name="ionAdd" size="20" color="#ffffff" /></gc-button>
+  </div>
+</div>
+<app-footer></app-footer>
