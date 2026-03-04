@@ -30,29 +30,6 @@
     </gc-card>
   </div>
 
-  <div class="flex mb-6">
-    <gc-card>
-      <table gcCardMedia class="w-full">
-        <thead>
-          <tr class="bg-slate-100">
-            <th class="text-left pl-4 py-3">Nombre</th>
-            <th class="text-center">Correo</th>
-            <th class="text-center">Cargo</th>
-            <th class="text-center">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (u of users; track $index) {
-            <tr>
-              <td class="text-left pl-4 py-3">{{ u.name }}</td>
-              <td class="text-center">{{ u.email }}</td>
-              <td class="text-center">{{ u.role }}</td>
-              <td class="text-center"><gc-button size="xs">Editar</gc-button></td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    </gc-card>
-  </div>
+  <app-user-list></app-user-list>
 </div>
 <app-footer></app-footer>

@@ -1,2 +1,35 @@
 <app-nav-bar></app-nav-bar>
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <h3 class="my-6 font-semibold text-gray-800 text-2xl">Registro de Órdenes</h3>
+  <div class="flex my-6">
+    <gc-card>
+      <div class="flex flex-col gap-4">
+        <gc-input
+          placeholder="Número de mesa"
+          inputLabel="Número de mesa"
+          type="number"
+          [value]="'' + newOrder.tableNumber"
+          (valueChange)="newOrder.tableNumber = +$event"
+        ></gc-input>
+        <gc-input
+          placeholder="Total"
+          inputLabel="Total ($)"
+          type="number"
+          [value]="'' + newOrder.total"
+          (valueChange)="newOrder.total = +$event"
+        ></gc-input>
+        <gc-input
+          placeholder="IVA"
+          inputLabel="IVA (%)"
+          type="number"
+          [value]="'' + newOrder.iva"
+          (valueChange)="newOrder.iva = +$event"
+        ></gc-input>
+      </div>
+      <gc-button class="mt-4" (click)="onCreateOrder()">Guardar</gc-button>
+    </gc-card>
+  </div>
+
+  <app-order-list></app-order-list>
+</div>
 <app-footer></app-footer>
