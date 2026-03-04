@@ -1,12 +1,14 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { supabase } from '../../../supabase';
 import { User } from '../interface/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   user = signal<User | null>(null);
+  router = inject(Router);
 
   async signInUser(email: string, password: string): Promise<User> {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
@@ -28,6 +30,13 @@ export class AuthService {
       role: dataDb.role,
     };
     this.user.set(newUser);
+
+    localStorage.setItem('user', JSON.stringify(this.user));
+
+    alert('Usuario logeado exitosamente');
+
+    this.router.navigate(['/pos']);
+
     return newUser;
   }
 
@@ -56,10 +65,18 @@ export class AuthService {
       email: dataDb[0].email,
       name: dataDb[0].name,
       role: dataDb[0].role,
-    }
+    };
 
     this.user.set(userLogged);
 
     return true;
+  }
+
+  async logout() {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) throw new Error(`Ocurrió un error inesperado ${error?.message}`);
+
+    this.router.navigate(['/']);
   }
 }

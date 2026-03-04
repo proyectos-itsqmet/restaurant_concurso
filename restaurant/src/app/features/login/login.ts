@@ -1,6 +1,7 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ButtonComponent, InputComponent, SpinnerComponent } from 'garaq-angular-components';
 import { RouterLink } from '@angular/router';
+import {AuthService} from '../../service/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -20,21 +21,15 @@ export class Login {
   protected readonly emailInvalid = computed(() => this.submitAttempted() && !this.email().trim());
   protected readonly passwordInvalid = computed(() => this.submitAttempted() && !this.password());
 
+  private authService = inject(AuthService);
+
   protected onLogin(): void {
     if (this.loading()) return;
     this.submitAttempted.set(true);
     if (!this.email().trim() || !this.password()) return;
 
     this.loading.set(true);
-    // Simular llamada al servidor
-    setTimeout(() => {
-      console.log(`${this.email}, ${this.password}`);
-      this.loading.set(false);
-      this.submittedData.set({
-        email: this.email(),
-        rememberMe: this.rememberMe(),
-        password: this.password(),
-      });
-    }, 1200);
+
+    this.authService.signInUser(this.email(), this.password());
   }
 }
