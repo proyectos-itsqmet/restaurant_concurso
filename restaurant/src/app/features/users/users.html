@@ -1,27 +1,58 @@
 <app-nav-bar></app-nav-bar>
 <div class="max-w-5xl mx-auto px-4 sm:px-6">
-  <div>
+  <h3 class="my-6 font-semibold text-gray-800 text-2xl">Registro de Usuarios</h3>
+  <div class="flex my-6">
     <!-- Formulario -->
     <gc-card>
-      <gc-input></gc-input>
-      <gc-input></gc-input>
-      <gc-select
-        inputLabel="Cargo"
-        inputDescription="Selecciona el cargo."
-        placeholder="Elige un cargo..."
-        [options]="cargo"
-        [value]="selectCargo"
-        (valueChange)="selectCargo = $event"
-      />
+      <div class="flex flex-col gap-4">
+        <gc-input
+          placeholder="Nombre completo"
+          inputLabel="Nombre completo"
+          [value]="newUser.name"
+          (valueChange)="newUser.name = $event"
+        ></gc-input>
+        <gc-input
+          placeholder="Correo electrónico"
+          inputLabel="Correo electrónico"
+          [value]="newUser.email"
+          (valueChange)="newUser.email = $event"
+        ></gc-input>
+        <gc-select
+          inputLabel="Cargo"
+          inputDescription="Selecciona el cargo."
+          placeholder="Elige un cargo..."
+          [options]="cargo"
+          [value]="selectCargo"
+          (valueChange)="selectCargo = $event"
+        />
+      </div>
+      <gc-button class="mt-4" (click)="onRegisterUser()">Guardar</gc-button>
     </gc-card>
   </div>
-  <div>
-    <!-- Tabla -->
-  </div>
 
-  <div class="flex gap-4 my-6">
-    <gc-input placeholder="Buscar empleado..."></gc-input>
-    <gc-button><ng-icon name="ionAdd" size="20" color="#ffffff" /></gc-button>
+  <div class="flex mb-6">
+    <gc-card>
+      <table gcCardMedia class="w-full">
+        <thead>
+          <tr class="bg-slate-100">
+            <th class="text-left pl-4 py-3">Nombre</th>
+            <th class="text-center">Correo</th>
+            <th class="text-center">Cargo</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (u of users; track $index) {
+            <tr>
+              <td class="text-left pl-4 py-3">{{ u.name }}</td>
+              <td class="text-center">{{ u.email }}</td>
+              <td class="text-center">{{ u.role }}</td>
+              <td class="text-center"><gc-button size="xs">Editar</gc-button></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </gc-card>
   </div>
 </div>
 <app-footer></app-footer>
