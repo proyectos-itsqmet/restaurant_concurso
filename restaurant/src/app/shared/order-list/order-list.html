@@ -1,0 +1,28 @@
+<div class="flex mb-6">
+  <gc-card>
+    <table gcCardMedia class="w-full">
+      <thead>
+        <tr class="bg-slate-100">
+          <th class="text-left pl-4 py-3"># Orden</th>
+          <th class="text-center">Mesa</th>
+          <th class="text-center">IVA</th>
+          <th class="text-center">Total</th>
+          <th class="text-center">Fecha</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (o of orders(); track $index) {
+          <tr>
+            <td class="text-left pl-4 py-3">{{ o.id }}</td>
+            <td class="text-center">{{ o.tableNumber }}</td>
+            <td class="text-center">{{ o.iva }}%</td>
+            <td class="text-center">${{ o.total }}</td>
+            <td class="text-center">{{ o.createdAt }}</td>
+            <td class="text-center"><gc-button size="xs">Ver</gc-button></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </gc-card>
+</div>

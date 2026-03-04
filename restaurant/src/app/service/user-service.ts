@@ -36,7 +36,7 @@ export class UserService {
 
     if (error) throw new Error(`Ocurrio un error inesperado> ${error.message}`);
 
-    alert('El usuario se ha actualizado con éxito')
+    alert('El usuario se ha actualizado con éxito');
 
     return true;
   }
