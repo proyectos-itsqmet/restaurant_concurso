@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OrderData } from '../interface/order';
+import { Order, OrderData } from '../interface/order';
 import { supabase } from '../../../supabase';
 
 @Injectable({
