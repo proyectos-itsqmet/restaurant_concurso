@@ -1,1 +1,26 @@
-<p>menu works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="flex gap-4 my-6">
+    <gc-input placeholder="Buscar plato..."></gc-input>
+    <gc-button><ng-icon name="ionAdd" size="20" color="#ffffff" /></gc-button>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+    @for (m of menu; track $index) {
+      <gc-card>
+        <img
+          gcCardMedia
+          src="https://images.pexels.com/photos/262897/pexels-photo-262897.jpeg"
+          alt=""
+        />
+        <div class="flex flex-col gap-2">
+          <h3 class="font-medium text-gray-600">{{ m.name }}</h3>
+          <p class="text-xs text-gray-400">{{ m.name }}</p>
+          <p class="font-bold text-gray-800">Precio: ${{ m.price }}</p>
+        </div>
+
+        <gc-button size="xs" class="w-full mt-2">Editar</gc-button>
+      </gc-card>
+    }
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,25 +1,10 @@
 import { Component, computed, signal } from '@angular/core';
-import {
-  ButtonComponent,
-  CardComponent,
-  InputComponent,
-  CheckboxComponent,
-  SpinnerComponent,
-  SeparatorComponent,
-} from 'garaq-angular-components';
+import { ButtonComponent, InputComponent, SpinnerComponent } from 'garaq-angular-components';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [
-    ButtonComponent,
-    CardComponent,
-    InputComponent,
-    RouterLink,
-    CheckboxComponent,
-    SpinnerComponent,
-    SeparatorComponent,
-  ],
+  imports: [ButtonComponent, InputComponent, RouterLink, SpinnerComponent],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -43,8 +28,13 @@ export class Login {
     this.loading.set(true);
     // Simular llamada al servidor
     setTimeout(() => {
+      console.log(`${this.email}, ${this.password}`);
       this.loading.set(false);
-      this.submittedData.set({ email: this.email(), rememberMe: this.rememberMe() });
+      this.submittedData.set({
+        email: this.email(),
+        rememberMe: this.rememberMe(),
+        password: this.password(),
+      });
     }, 1200);
   }
 }
