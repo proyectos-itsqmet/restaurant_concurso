@@ -1,0 +1,23 @@
+<div
+  class="relative flex flex-col items-center justify-center min-h-screen bg-white px-4 py-16 text-center overflow-hidden"
+>
+  <!-- Decorative "404" behind content -->
+  <span
+    class="absolute text-[12rem] sm:text-[18rem] font-black text-gray-100 select-none leading-none pointer-events-none"
+    aria-hidden="true"
+    >404</span
+  >
+
+  <!-- Content -->
+  <div class="relative z-10 flex flex-col items-center">
+    <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">Error 404</p>
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Página no encontrada</h1>
+    <p class="text-gray-500 text-sm sm:text-base max-w-sm mb-8">
+      Lo sentimos, la página que buscas no existe o fue movida a otra dirección.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center gap-3">
+      <gc-button variant="outline" (click)="goBack()">← Volver</gc-button>
+      <gc-button (click)="goHome()">Ir al inicio</gc-button>
+    </div>
+  </div>
+</div>
